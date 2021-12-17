@@ -1,5 +1,12 @@
-from PyQt4.QtCore import *
-from PyQt4.QtGui import *
+#updated for QGIS 3
+
+try:
+    from PyQt5.QtCore import *
+    from PyQt5.QtGui import * 
+    from PyQt5.QtWidgets import *
+except:
+    from PyQt4.QtCore import *
+    from PyQt4.QtGui import *
 from qgis.core import *
 from qgis.gui import *
 
@@ -22,4 +29,4 @@ def run_script(iface):
     poly.setGeometry(geom)
     pr.addFeatures([poly])
     layer.updateExtents()
-    QgsMapLayerRegistry.instance().addMapLayers([layer])
+    QgsProject.instance().addMapLayers([layer])
